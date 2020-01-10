@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { ClientCards } from "./component/ClientCards";
 import { AddClients } from "./component/AddClients";
+import { StepsCol } from "./component/StepsCol";
 
 //create your first component
 export const Layout = () => {
@@ -23,8 +24,7 @@ export const Layout = () => {
 			<BrowserRouter>
 				<ScrollToTop>
 					<Navbar />
-					<ClientCards />
-					<AddClients />
+					<StepsCol />
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Demo} />
