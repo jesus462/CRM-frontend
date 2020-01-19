@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 export const AddClients = () => (
 	<div>
@@ -30,21 +33,98 @@ export const AddClients = () => (
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div>
-							<ul className="list-group list-group-flush">
-								<li className="list-group-item">Nombre:</li>
-								<li className="list-group-item">Empresa:</li>
-								<li className="list-group-item">Cargo:</li>
-								<li className="list-group-item">...</li>
-							</ul>
-						</div>
-						<div className="modal-footer">
-							<button type="button" className="btn btn-secondary" data-dismiss="modal">
-								Cerrar
-							</button>
-							<button type="button" className="btn btn-primary">
-								Guardar
-							</button>
+						<div className="form-style">
+							<Form>
+								<Form.Row>
+									<Form.Group as={Col} controlId="formGridName">
+										<Form.Label>Nombre</Form.Label>
+										<Form.Control type="text" placeholder="Ingrese nombre" />
+									</Form.Group>
+
+									<Form.Group as={Col} controlId="formGridLastName">
+										<Form.Label>Apellido</Form.Label>
+										<Form.Control type="text" placeholder="Ingrese apellido" />
+									</Form.Group>
+								</Form.Row>
+
+								<Form.Row>
+									<Form.Group as={Col} controlId="formGridEmpresa">
+										<Form.Label>Empresa</Form.Label>
+										<Form.Control type="text" placeholder="Ingrese empresa" />
+									</Form.Group>
+
+									<Form.Group as={Col} controlId="formGridPosicion">
+										<Form.Label>Posición / Cargo</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Ingrese la posición o cargo en la empresa"
+										/>
+									</Form.Group>
+								</Form.Row>
+
+								<Form.Group controlId="formGridEmail">
+									<Form.Label>Email</Form.Label>
+									<Form.Control type="email" placeholder="Ingrese email" />
+								</Form.Group>
+
+								<Form.Row>
+									<Form.Group as={Col} controlId="formGridPhone">
+										<Form.Label>Teléfono</Form.Label>
+										<Form.Control type="number" placeholder="Ingrese número de teléfono" />
+									</Form.Group>
+
+									<Form.Group as={Col} controlId="formGridExtraPhone">
+										<Form.Label>Teléfono adicional</Form.Label>
+										<Form.Control
+											type="number"
+											placeholder="Ingrese número de teléfono adicional"
+										/>
+									</Form.Group>
+								</Form.Row>
+
+								<Form.Group controlId="formGridSector">
+									<Form.Label>Sector / Rubro</Form.Label>
+									<Form.Control type="text" placeholder="Ingrese el rubro" />
+								</Form.Group>
+
+								<Form.Row>
+									<Form.Group as={Col} controlId="formGridCiudad">
+										<Form.Label>Ciudad</Form.Label>
+										<Form.Control type="text" placeholder="Ingrese la ciudad" />
+									</Form.Group>
+
+									<Form.Group as={Col} controlId="formGridPais">
+										<Form.Label>País</Form.Label>
+										<Form.Control type="text" placeholder="Ingrese el país" />
+									</Form.Group>
+								</Form.Row>
+
+								<Form.Row>
+									<Form.Group as={Col} controlId="formGridLink">
+										<Form.Label>Linkedin</Form.Label>
+										<Form.Control type="text" placeholder="Ingrese el url" />
+									</Form.Group>
+
+									<Form.Group as={Col} controlId="formGridFuente">
+										<Form.Label>Fuente</Form.Label>
+										<Form.Control type="text" placeholder="Ingrese la fuente" />
+									</Form.Group>
+								</Form.Row>
+
+								<Form.Group controlId="formGridSector">
+									<Form.Label>Sector / Rubro</Form.Label>
+									<Form.Control type="textarea" placeholder="Ingrese el rubro" />
+								</Form.Group>
+
+								<Form.Group controlId="exampleForm.ControlTextarea1">
+									<Form.Label>Observaciones</Form.Label>
+									<Form.Control as="textarea" rows="3" />
+								</Form.Group>
+
+								<Button variant="primary" type="submit">
+									Submit
+								</Button>
+							</Form>
 						</div>
 					</div>
 				</div>
