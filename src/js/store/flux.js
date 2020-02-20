@@ -1,6 +1,24 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			client: [
+				{
+					name: "Jesus",
+					company: "4Geeks",
+					position: "Student"
+				},
+				{
+					name: "Jonathan",
+					company: "4Geeks",
+					position: "Student"
+				},
+				{
+					name: "Ernesto",
+					comapny: "4Geeks",
+					position: "Teacher"
+				}
+			],
+
 			demo: [
 				{
 					title: "FIRST",
