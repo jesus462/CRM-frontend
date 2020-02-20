@@ -1,18 +1,21 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			client: [
+			clients: [
 				{
+					id: 1,
 					name: "Jesus",
 					company: "4Geeks",
 					position: "Student"
 				},
 				{
+					id: 2,
 					name: "Jonathan",
 					company: "4Geeks",
 					position: "Student"
 				},
 				{
+					id: 3,
 					name: "Ernesto",
 					comapny: "4Geeks",
 					position: "Teacher"

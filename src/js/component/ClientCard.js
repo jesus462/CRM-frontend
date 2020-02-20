@@ -2,9 +2,10 @@ import React, { Component, useContext } from "react";
 import { ClientModal } from "./ClientModal";
 import { ClientDeleteModal } from "./ClientDeleteModal";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const ClientCard = () => {
-	const { store, actions } = useContext(Context);
+export const ClientCard = ({ person }) => {
+	// const { store, actions } = useContext(Context);
 
 	return (
 		<div>
@@ -12,9 +13,9 @@ export const ClientCard = () => {
 				<div className="card-header text-white bg-success" />
 				<div className="card">
 					<ul className="list-group list-group-flush">
-						<li className="list-group-item">Nombre: {store.client.name}</li>
-						<li className="list-group-item">Empresa: {store.client.company}</li>
-						<li className="list-group-item">Cargo: {store.client.position}</li>
+						<li className="list-group-item">Nombre: {person.name}</li>
+						<li className="list-group-item">Empresa: {person.company}</li>
+						<li className="list-group-item">Cargo: {person.position}</li>
 						<li className="list-group-item">
 							<button
 								type="button"
@@ -43,4 +44,8 @@ export const ClientCard = () => {
 			<ClientDeleteModal />
 		</div>
 	);
+};
+
+ClientCard.propTypes = {
+	person: PropTypes.object
 };

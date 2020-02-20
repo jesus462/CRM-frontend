@@ -6,8 +6,8 @@ import { AddClientForm } from "./AddClientForm";
 export const Funnel = () => {
 	const { store, actions } = useContext(Context);
 
-	let clientCards = store.client.map(person => {
-		return <ClientCard key={person.id} name={person} />;
+	let clientCards = store.clients.map(person => {
+		return <ClientCard key={person.id} person={person} />;
 	});
 
 	return (
