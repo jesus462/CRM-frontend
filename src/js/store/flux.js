@@ -1,4 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
+    const APIurl = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients"
 	return {
 		store: {
 			clients: [
@@ -36,6 +37,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+            fetchCreateClient: async () => {
+				let actions = getActions();
+				let clientWasCreated = false;
+				try {
+					let response = await fetch(APIurl, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/JSON"
+						},
+						body: "[]"
+					});
+					if (response.ok) {
+						await actions.fetchUserClients();
+						clientWasCreated = true;
+					}
+				} catch (error) {
+					console.log(error);
+				}
+				return clientWasCreated;
+            },
+            
+            fetchUserClients: async () => {
+				let clients = [];
+				let clientExists = false;
+				try {
+					let response = await fetch(APIurl, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/JSON"
+						}
+					});
+					if (response.ok) {
+						tasks = await response.json();
+						userExists = true;
+					} else if (response.stats == 404) {
+						console.log(
+							"no user found, please click on create button"
+						);
+						alert("no user found, please click on create button");
+					}
+				} catch (error) {
+					console.log("something failed");
+					console.log(error);
+				}
+				setStore({
+					tasks: tasks
+				});
+				return userExists;
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
@@ -49,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//get the store
 				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
+                //the entire demo array to look for the respective index
 				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
