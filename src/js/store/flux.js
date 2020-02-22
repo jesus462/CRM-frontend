@@ -1,27 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
-    const APIurl = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients"
+	const APIurl = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients";
 	return {
 		store: {
-			clients: [
-				{
-					id: 1,
-					name: "Jesus",
-					company: "4Geeks",
-					position: "Student"
-				},
-				{
-					id: 2,
-					name: "Jonathan",
-					company: "4Geeks",
-					position: "Student"
-				},
-				{
-					id: 3,
-					name: "Ernesto",
-					comapny: "4Geeks",
-					position: "Teacher"
-				}
-			],
+			clients: [],
 
 			demo: [
 				{
@@ -37,17 +18,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-            fetchCreateClient: async () => {
+			fetchCreateClient: async client => {
+				console.log("estoy empezando");
 				let actions = getActions();
 				let clientWasCreated = false;
 				try {
+					console.log("trying post");
 					let response = await fetch(APIurl, {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/JSON"
 						},
-						body: "[]"
+						body: JSON.stringify(client)
 					});
+					console.log(response.statusText);
 					if (response.ok) {
 						await actions.fetchUserClients();
 						clientWasCreated = true;
@@ -56,11 +40,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 				return clientWasCreated;
-            },
-            
-            fetchUserClients: async () => {
+			},
+
+			fetchUserClients: async () => {
 				let clients = [];
-				let clientExists = false;
+				console.log("fetching clients");
 				try {
 					let response = await fetch(APIurl, {
 						method: "GET",
@@ -69,22 +53,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					});
 					if (response.ok) {
-						tasks = await response.json();
-						userExists = true;
+						clients = await response.json();
+						console.log(clients);
 					} else if (response.stats == 404) {
-						console.log(
-							"no user found, please click on create button"
-						);
+						console.log("no client found, please click on create button");
 						alert("no user found, please click on create button");
+					} else {
+						console.log(response.statusText);
 					}
 				} catch (error) {
 					console.log("something failed");
 					console.log(error);
 				}
 				setStore({
-					tasks: tasks
+					clients: clients
 				});
-				return userExists;
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -99,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//get the store
 				const store = getStore();
 
-                //the entire demo array to look for the respective index
+				//the entire demo array to look for the respective index
 				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;

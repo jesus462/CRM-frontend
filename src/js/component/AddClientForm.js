@@ -32,7 +32,10 @@ export const AddClientForm = () => {
 	};
 
 	const handleSubmit = e => {
-		console.log(client);
+		e.preventDefault();
+		e.stopPropagation();
+        actions.fetchCreateClient(client);
+        
 	};
 
 	return (
