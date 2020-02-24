@@ -1,5 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	const APIurl = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients";
+	const APIurlTwo = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients/<client_id>";
+
 	return {
 		store: {
 			clients: [],
@@ -19,11 +21,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			fetchCreateClient: async client => {
-				console.log("estoy empezando");
 				let actions = getActions();
 				let clientWasCreated = false;
+
 				try {
-					console.log("trying post");
 					let response = await fetch(APIurl, {
 						method: "POST",
 						headers: {
@@ -31,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						},
 						body: JSON.stringify(client)
 					});
-					console.log(response.statusText);
+
 					if (response.ok) {
 						await actions.fetchUserClients();
 						clientWasCreated = true;
@@ -39,12 +40,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+
 				return clientWasCreated;
 			},
 
 			fetchUserClients: async () => {
 				let clients = [];
-				console.log("fetching clients");
+
 				try {
 					let response = await fetch(APIurl, {
 						method: "GET",
@@ -52,23 +54,70 @@ const getState = ({ getStore, getActions, setStore }) => {
 							"Content-Type": "application/JSON"
 						}
 					});
+
 					if (response.ok) {
 						clients = await response.json();
-						console.log(clients);
 					} else if (response.stats == 404) {
 						console.log("no client found, please click on create button");
-						alert("no user found, please click on create button");
-					} else {
-						console.log(response.statusText);
 					}
 				} catch (error) {
-					console.log("something failed");
 					console.log(error);
 				}
+
 				setStore({
 					clients: clients
 				});
 			},
+
+			/*fetchUpdateClient: async clients => {
+				const actions = getActions();
+				let wasUpdated = false;
+
+				try {
+					let response = await fetch(APIurl, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/JSON"
+						},
+						body: JSON.stringify(client)
+					});
+
+					if (response.ok) {
+						await actions.fetchUserClients();
+						wasUpdated = true;
+					} else {
+						console.log("clients were not updated, try again");
+					}
+
+				} catch (error) {
+					console.log(error);
+				}
+
+				return wasUpdated;
+            },*/
+
+			fetchDeleteClient: async () => {
+				try {
+					let response = await fetch(APIurlTwo, {
+						method: "DELETE",
+						headers: {
+							"Content-Type": "application/JSON"
+						}
+					});
+
+					if (response.ok) {
+						console.log("user deleted");
+						setStore({
+							clients: []
+						});
+					} else {
+						console.log("something failed: ", response.status, ", ", response.statusText);
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

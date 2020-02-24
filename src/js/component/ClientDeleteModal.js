@@ -1,3 +1,6 @@
+/* This component will not be used for now, for the presentation of the 28th this wont be used.
+the button delete in ClientCard will not be linked to this modal.*/
+
 import React, { Component } from "react";
 
 export const ClientDeleteModal = () => (

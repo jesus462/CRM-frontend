@@ -1,11 +1,16 @@
 import React, { Component, useContext } from "react";
 import { ClientModal } from "./ClientModal";
-import { ClientDeleteModal } from "./ClientDeleteModal";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const ClientCard = ({ person }) => {
-	// const { store, actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
+
+	const handleClick = e => {
+		e.preventDefault();
+		e.stopPropagation();
+		actions.fetchDeleteClient();
+	};
 
 	return (
 		<div>
@@ -24,11 +29,7 @@ export const ClientCard = ({ person }) => {
 								data-target="#fullData">
 								<i className="fas fa-search" />
 							</button>
-							<button
-								type="button"
-								className="btn btn-success trash-button"
-								data-toggle="modal"
-								data-target="#deleteModal">
+							<button onClick={handleClick} type="button" className="btn btn-success trash-button">
 								<i className="fas fa-trash" />
 							</button>
 							<button type="button" className="btn btn-success next-button">
@@ -40,8 +41,6 @@ export const ClientCard = ({ person }) => {
 			</div>
 
 			<ClientModal />
-
-			<ClientDeleteModal />
 		</div>
 	);
 };

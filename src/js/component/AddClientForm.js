@@ -34,8 +34,7 @@ export const AddClientForm = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		e.stopPropagation();
-        actions.fetchCreateClient(client);
-        
+		actions.fetchCreateClient(client);
 	};
 
 	return (
