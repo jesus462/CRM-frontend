@@ -3,11 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
+import { Clients } from "./views/Clients";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { NavbarTop } from "./component/NavbarTop";
 import { Footer } from "./component/footer";
 import { Funnel } from "./component/Funnel";
 
@@ -21,10 +22,11 @@ export const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter>
 				<ScrollToTop>
-					<Navbar />
+					<NavbarTop />
 					<Funnel />
 					<Switch>
 						<Route exact path="/" component={Home} />
+						<Route exact path="/Clients" component={Clients} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					<Footer />
