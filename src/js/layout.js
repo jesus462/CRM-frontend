@@ -9,7 +9,7 @@ import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { NavbarTop } from "./component/NavbarTop";
-import { Footer } from "./component/footer";
+import { Footer } from "./component/Footer";
 import { Funnel } from "./component/Funnel";
 
 //create your first component

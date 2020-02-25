@@ -1,7 +1,5 @@
 import React, { Component, useState, useContext } from "react";
-import { Form } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
 export const AddClientForm = () => {
