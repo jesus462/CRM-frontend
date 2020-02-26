@@ -6,11 +6,11 @@ import { Home } from "./views/home";
 import { Clients } from "./views/Clients";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
+import { Funnel } from "./views/Funnel";
 import injectContext from "./store/appContext";
 
 import { NavbarTop } from "./component/NavbarTop";
 import { Footer } from "./component/Footer";
-import { Funnel } from "./component/Funnel";
 
 //create your first component
 export const Layout = () => {
@@ -23,10 +23,10 @@ export const Layout = () => {
 			<BrowserRouter>
 				<ScrollToTop>
 					<NavbarTop />
-					<Funnel />
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/Clients" component={Clients} />
+						<Route exact path="/Funnel" component={Funnel} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					<Footer />

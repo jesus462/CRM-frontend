@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import "../../styles/NavbarTop.scss";
+import "../../styles/component/NavbarTop.scss";
 
 export const NavbarTop = () => {
 	return (
@@ -20,7 +20,7 @@ export const NavbarTop = () => {
 					<Link to="/Clients" className="buttons-left">
 						Clientes
 					</Link>
-					<Link to="/oportunidades" className="buttons-left">
+					<Link to="/Funnel" className="buttons-left">
 						Oportunidades
 					</Link>
 					<Link to="/calendario" className="buttons-left">

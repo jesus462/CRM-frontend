@@ -1,7 +1,7 @@
 import React, { Component, useContext } from "react";
 import { Context } from "../store/appContext";
-import { ClientCard } from "./ClientCard";
-import { AddClientForm } from "./AddClientForm";
+import { ClientCard } from "../component/ClientCard";
+import { AddClientForm } from "../component/AddClientForm";
 
 export const Funnel = () => {
 	const { store, actions } = useContext(Context);

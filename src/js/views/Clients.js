@@ -3,7 +3,7 @@ import { ClientCard } from "../component/ClientCard";
 import { Context } from "../store/appContext";
 import { AddClientForm } from "../component/AddClientForm";
 
-import "../../styles/Clients.scss";
+import "../../styles/views/Clients.scss";
 
 export const Clients = () => {
 	const { store, actions } = useContext(Context);
