@@ -6,7 +6,7 @@
 }
 
 .next-button{
-    margin-left: 110px;
+    float: right;
 }
 
 .addClient-btn{
@@ -55,5 +55,9 @@
 }
 
 .form-style{
+    padding: 10px;
+}
+
+.add-client-card{
     padding: 10px;
 }

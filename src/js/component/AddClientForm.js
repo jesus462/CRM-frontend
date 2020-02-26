@@ -36,9 +36,8 @@ export const AddClientForm = () => {
 	};
 
 	return (
-		<div>
+		<div className="add-client-card">
 			<div className="card mb-3">
-				<div className="card-header text-white bg-secondary" />
 				<div className="card">
 					<button
 						type="button"

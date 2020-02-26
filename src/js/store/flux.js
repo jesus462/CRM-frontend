@@ -1,6 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	const APIurl = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients";
-	const APIurlTwo = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients/<client_id>";
 
 	return {
 		store: {
@@ -96,9 +95,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return wasUpdated;
             },*/
 
-			fetchDeleteClient: async () => {
+			fetchDeleteClient: async id => {
 				try {
-					let response = await fetch(APIurlTwo, {
+					let response = await fetch(APIurl + "/" + id, {
 						method: "DELETE",
 						headers: {
 							"Content-Type": "application/JSON"

@@ -12,5 +12,10 @@ export const Clients = () => {
 		return <ClientCard key={person.id} person={person} />;
 	});
 
-	return <div className="client-wrapper">{clientCards}</div>;
+	return (
+		<div className="client-wrapper">
+			<AddClientForm />
+			{clientCards}
+		</div>
+	);
 };

@@ -9,13 +9,13 @@ export const ClientCard = ({ person }) => {
 	const handleClick = e => {
 		e.preventDefault();
 		e.stopPropagation();
-		actions.fetchDeleteClient();
+		actions.fetchDeleteClient(person.id);
 	};
 
 	return (
-		<div>
-			<div className="card mb-3">
-				<div className="card-header text-white bg-success" />
+		<div className="clientcard-design">
+			<div className="card mb-3 card-style">
+				<div className="card-header text-white btn-head-style" />
 				<div className="card">
 					<ul className="list-group list-group-flush">
 						<li className="list-group-item">Nombre: {person.name}</li>
@@ -24,15 +24,15 @@ export const ClientCard = ({ person }) => {
 						<li className="list-group-item">
 							<button
 								type="button"
-								className="btn btn-success"
+								className="btn btn-head-style"
 								data-toggle="modal"
 								data-target="#fullData">
 								<i className="fas fa-search" />
 							</button>
-							<button onClick={handleClick} type="button" className="btn btn-success trash-button">
+							<button onClick={handleClick} type="button" className="btn btn-head-style trash-button">
 								<i className="fas fa-trash" />
 							</button>
-							<button type="button" className="btn btn-success next-button">
+							<button type="button" className="btn btn-head-style next-button">
 								<i className="fas fa-arrow-right" />
 							</button>
 						</li>
@@ -40,7 +40,7 @@ export const ClientCard = ({ person }) => {
 				</div>
 			</div>
 
-			<ClientModal />
+			<ClientModal key={person.id} person={person} />
 		</div>
 	);
 };
