@@ -96,6 +96,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             },*/
 
 			fetchDeleteClient: async id => {
+				let actions = getActions();
+
 				try {
 					let response = await fetch(APIurl + "/" + id, {
 						method: "DELETE",
@@ -106,9 +108,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					if (response.ok) {
 						console.log("user deleted");
-						setStore({
-							clients: []
-						});
+						await actions.fetchUserClients();
 					} else {
 						console.log("something failed: ", response.status, ", ", response.statusText);
 					}
