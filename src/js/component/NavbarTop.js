@@ -9,7 +9,7 @@ export const NavbarTop = () => {
 		<Navbar className="full-nav" expand="lg">
 			<Navbar.Brand className="brand-nav">
 				<i className="fas fa-address-book" />
-				Orgnízate
+				Compás
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
