@@ -1,0 +1,21 @@
+.outer-opp-card{
+    padding: 15px;
+
+    .opp-card-style{
+        width: 18rem;
+
+        .logo-color{
+            color: black;
+        }
+
+        .btn-head-style-opp-arrow{
+            background-color:rgb(255, 249, 214);
+            float: right;
+        }
+
+        .btn-head-style-opp{
+            background-color:rgb(255, 249, 214);
+            margin-right: 5px;
+        }
+    }
+}

@@ -20,8 +20,11 @@ export const NavbarTop = () => {
 					<Link to="/Clients" className="buttons-left">
 						Clientes
 					</Link>
-					<Link to="/Funnel" className="buttons-left">
+					<Link to="/Opportunity" className="buttons-left">
 						Oportunidades
+					</Link>
+					<Link to="/Funnel" className="buttons-left">
+						Funnel
 					</Link>
 					<Link to="/calendario" className="buttons-left">
 						Calendario

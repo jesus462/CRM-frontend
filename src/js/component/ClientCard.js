@@ -1,7 +1,10 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useState } from "react";
+import { Button } from "react-bootstrap";
 import { ClientModal } from "./ClientModal";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+
+import "../../styles/component/ClientCard.scss";
 
 export const ClientCard = ({ person }) => {
 	const { store, actions } = useContext(Context);
@@ -11,6 +14,10 @@ export const ClientCard = ({ person }) => {
 		e.stopPropagation();
 		actions.fetchDeleteClient(person.id);
 	};
+
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
 	return (
 		<div className="clientcard-design">
@@ -22,13 +29,9 @@ export const ClientCard = ({ person }) => {
 						<li className="list-group-item">Empresa: {person.company}</li>
 						<li className="list-group-item">Cargo: {person.position}</li>
 						<li className="list-group-item">
-							<button
-								type="button"
-								className="btn btn-head-style"
-								data-toggle="modal"
-								data-target="#fullData">
-								<i className="fas fa-search" />
-							</button>
+							<Button className="btn btn-head-style" onClick={handleShow}>
+								<i className="fas fa-search logo-color-search" />
+							</Button>
 							<button onClick={handleClick} type="button" className="btn btn-head-style trash-button">
 								<i className="fas fa-trash" />
 							</button>
@@ -40,7 +43,7 @@ export const ClientCard = ({ person }) => {
 				</div>
 			</div>
 
-			<ClientModal key={person.id} person={person} />
+			<ClientModal key={person.id} person={person} show={show} handleClose={handleClose} />
 		</div>
 	);
 };

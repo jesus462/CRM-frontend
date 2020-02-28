@@ -1,57 +1,38 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import { Modal, Button } from "react-bootstrap";
 
-export const ClientModal = ({ person }) => {
+export const ClientModal = ({ person, handleClose, show }) => {
 	return (
-		<div
-			className="modal fade"
-			id="fullData"
-			tabIndex="-1"
-			role="dialog"
-			aria-labelledby="fullDataLabel"
-			aria-hidden="true">
-			<div className="modal-dialog" role="document">
-				<div className="modal-content">
-					<div className="modal-header">
-						<h5 className="modal-title" id="exampleModalLabel">
-							Datos
-						</h5>
-						<button type="button" className="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div>
-						<ul className="list-group list-group-flush">
-							<li className="list-group-item">Nombre: {person.name}</li>
-							<li className="list-group-item">Apellido: {person.lastName}</li>
-							<li className="list-group-item">Empresa: {person.company}</li>
-							<li className="list-group-item">Posición/Cargo: {person.position}</li>
-							<li className="list-group-item">Email: {person.email}</li>
-							<li className="list-group-item">Teléfono: {person.phone}</li>
-							<li className="list-group-item">Teléfono adicional: {person.extraPhone}</li>
-							<li className="list-group-item">Sector/Rubro: {person.sector}</li>
-							<li className="list-group-item">Ciudad: {person.city}</li>
-							<li className="list-group-item">País: {person.country}</li>
-							<li className="list-group-item">Linkedin: {person.linkedin}</li>
-							<li className="list-group-item">Fuente: {person.source}</li>
-							<li className="list-group-item">Observaciones: {person.obervations}</li>
-						</ul>
-					</div>
-					<div className="modal-footer">
-						<button type="button" className="btn btn-secondary" data-dismiss="modal">
-							Cerrar
-						</button>
-						<button type="button" className="btn btn-primary">
-							Guardar
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<Modal show={show} onHide={handleClose}>
+			<Modal.Header closeButton>
+				<Modal.Title>Datos</Modal.Title>
+			</Modal.Header>
+			<Modal.Body>Nombre: {person.name}</Modal.Body>
+			<Modal.Body>Apellido: {person.lastName}</Modal.Body>
+			<Modal.Body>Empresa: {person.company}</Modal.Body>
+			<Modal.Body>Posición/Cargo: {person.position}</Modal.Body>
+			<Modal.Body>Email: {person.email}</Modal.Body>
+			<Modal.Body>Teléfono: {person.phone}</Modal.Body>
+			<Modal.Body>Teléfono adicional: {person.extraPhone}</Modal.Body>
+			<Modal.Body>Sector/Rubro: {person.sector}</Modal.Body>
+			<Modal.Body>Ciudad: {person.city}</Modal.Body>
+			<Modal.Body>País: {person.country}</Modal.Body>
+			<Modal.Body>Linkedin: {person.linkedin}</Modal.Body>
+			<Modal.Body>Fuente: {person.source}</Modal.Body>
+			<Modal.Body>Observaciones: {person.obervations}</Modal.Body>
+			<Modal.Footer>
+				<Button variant="secondary" onClick={handleClose}>
+					Close
+				</Button>
+			</Modal.Footer>
+		</Modal>
 	);
 };
 
 ClientModal.propTypes = {
-	person: PropTypes.object
+	person: PropTypes.object,
+	handleClose: PropTypes.func,
+	show: PropTypes.boolean
 };

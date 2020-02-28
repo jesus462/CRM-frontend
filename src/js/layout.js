@@ -7,6 +7,7 @@ import { Clients } from "./views/Clients";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { Funnel } from "./views/Funnel";
+import { Opportunity } from "./views/Opportunity";
 import injectContext from "./store/appContext";
 
 import { NavbarTop } from "./component/NavbarTop";
@@ -26,6 +27,7 @@ export const Layout = () => {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/Clients" component={Clients} />
+						<Route exact path="/Opportunity" component={Opportunity} />
 						<Route exact path="/Funnel" component={Funnel} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
