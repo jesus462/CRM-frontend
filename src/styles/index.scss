@@ -61,3 +61,23 @@
 .add-client-card{
     padding: 10px;
 }
+
+/* home styles */
+.container-home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.cell-home1 {
+    background-color: red;
+}
+
+.cell-home2 {
+    background-color: blue;
+}
+
+.container-card-home {
+    width: 80%;
+    padding-left: 20%;      
+}
