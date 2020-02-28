@@ -1,9 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	const APIurl = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients";
+	const APIurlOpp = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/opportunitys";
 
 	return {
 		store: {
 			clients: [],
+
+			opportunitys: [],
 
 			demo: [
 				{
@@ -115,6 +118,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+			},
+
+			fetchCreateOpportunity: async opportunity => {
+				let actions = getActions();
+				let opportunityWasCreated = false;
+
+				try {
+					let response = await fetch(APIurlOpp, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/JSON"
+						},
+						body: JSON.stringify(opportunity)
+					});
+
+					if (response.ok) {
+						await actions.fetchUserOpportunitys();
+						opportunityWasCreated = true;
+					}
+				} catch (error) {
+					console.log(error);
+				}
+
+				return opportunityWasCreated;
+			},
+
+			fetchUserOpportunitys: async () => {
+				let opportunitys = [];
+
+				try {
+					let response = await fetch(APIurlOpp, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/JSON"
+						}
+					});
+
+					if (response.ok) {
+						opportunitys = await response.json();
+					} else if (response.stats == 404) {
+						console.log("no opportunity found, please click on create button");
+					}
+				} catch (error) {
+					console.log(error);
+				}
+
+				setStore({
+					opportunitys: opportunitys
+				});
 			},
 
 			// Use getActions to call a function within a fuction

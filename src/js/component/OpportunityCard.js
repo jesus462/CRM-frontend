@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 import "../../styles/component/OpportunityCard.scss";
 
-export const OpportunityCard = () => {
+export const OpportunityCard = ({opening}) => {
 	const [show, setShow] = useState(false);
 
 	const { store, actions } = useContext(Context);
@@ -19,13 +19,13 @@ export const OpportunityCard = () => {
 			<Card className="opp-card-style">
 				<Card.Header className="btn-head-style-opp" />
 				<Card.Body>
-					<Card.Title>Proyecto</Card.Title>
-					<Card.Text>Descripcion del proyecto.</Card.Text>
+					<Card.Title>{opening.project}</Card.Title>
+					<Card.Text>{opening.projectDescription}</Card.Text>
 				</Card.Body>
 				<ListGroup className="list-group-flush">
-					<ListGroupItem>Costo:</ListGroupItem>
-					<ListGroupItem>Tiempo:</ListGroupItem>
-					<ListGroupItem>Alcance:</ListGroupItem>
+					<ListGroupItem>Costo: {opening.cost}</ListGroupItem>
+					<ListGroupItem>Tiempo: {opening.time}</ListGroupItem>
+					<ListGroupItem>Alcance: {opening.reach}</ListGroupItem>
 				</ListGroup>
 				<Card.Body>
 					<Button className="btn-head-style-opp" onClick={handleShow}>
@@ -43,4 +43,8 @@ export const OpportunityCard = () => {
 			<OpportunityClientModal show={show} handleClose={handleClose} />
 		</div>
 	);
+};
+
+OpportunityCard.propTypes = {
+	opening: PropTypes.object
 };
