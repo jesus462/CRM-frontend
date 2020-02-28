@@ -169,6 +169,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
+			fetchDeleteClient: async id => {
+				let actions = getActions();
+
+				try {
+					let response = await fetch(APIurlOpp + "/" + id, {
+						method: "DELETE",
+						headers: {
+							"Content-Type": "application/JSON"
+						}
+					});
+
+					if (response.ok) {
+						console.log("opportunity deleted");
+						await actions.fetchUserOpportunitys();
+					} else {
+						console.log("something failed: ", response.status, ", ", response.statusText);
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

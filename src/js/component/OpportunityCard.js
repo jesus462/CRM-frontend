@@ -6,10 +6,16 @@ import PropTypes from "prop-types";
 
 import "../../styles/component/OpportunityCard.scss";
 
-export const OpportunityCard = ({opening}) => {
+export const OpportunityCard = ({ opening }) => {
 	const [show, setShow] = useState(false);
 
 	const { store, actions } = useContext(Context);
+
+	const handleClick = e => {
+		e.preventDefault();
+		e.stopPropagation();
+		actions.fetchDeleteClient(opening.id);
+	};
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
@@ -31,7 +37,7 @@ export const OpportunityCard = ({opening}) => {
 					<Button className="btn-head-style-opp" onClick={handleShow}>
 						<i className="fas fa-male logo-color" />
 					</Button>
-					<Button className="btn-head-style-opp">
+					<Button className="btn-head-style-opp" onClick={handleClick}>
 						<i className="fas fa-trash logo-color" />
 					</Button>
 					<Button className="btn-head-style-opp-arrow">
