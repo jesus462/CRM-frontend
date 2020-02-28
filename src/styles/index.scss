@@ -67,17 +67,24 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    margin-top: -20px;
+    margin-bottom: -360px;
 }
 
 .cell-home1 {
-    background-color: red;
+    background-color: white;
 }
 
 .cell-home2 {
-    background-color: blue;
+    background-color: white;
+    padding-right: 20px;
 }
 
-.container-card-home {
-    width: 80%;
-    padding-left: 20%;      
+.img-cell1 {
+    width: 300px;
+    height: 300px;
 }
+
+
+
+ 
