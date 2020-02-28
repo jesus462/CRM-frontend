@@ -65,14 +65,11 @@
 /* home styles */
 .container-home {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     margin-top: -20px;
-    margin-bottom: -360px;
-}
-
-.cell-home1 {
-    background-color: white;
+    margin-left: 10px;
+    margin-bottom: -280px;
 }
 
 .cell-home2 {

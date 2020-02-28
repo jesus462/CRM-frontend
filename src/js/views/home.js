@@ -6,9 +6,6 @@ import Image from "react-bootstrap/Image";
 export const Home = () => (
 	<div>
 		<div className="container-home">
-			<div className="cell-home1">
-				<p>1</p>
-			</div>
 			<div className="cell-home2">
 				<div className="jumbotron jumbotron-fluid">
 					<div className="container">
