@@ -14,7 +14,7 @@ export const OpportunityCard = ({ opening }) => {
 	const handleClick = e => {
 		e.preventDefault();
 		e.stopPropagation();
-		actions.fetchDeleteClient(opening.id);
+		actions.fetchDeleteOpportunity(opening.id);
 	};
 
 	const handleClose = () => setShow(false);

@@ -1,6 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const APIurl = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/clients";
-	const APIurlOpp = "https://3000-a393f249-b39c-4750-9642-290dec3131dc.ws-us02.gitpod.io/opportunitys";
+	const APIurl = "https://3000-fbed2734-d269-458c-9da2-b84c5e23bb59.ws-us02.gitpod.io/clients";
+	const APIurlOpp = "https://3000-fbed2734-d269-458c-9da2-b84c5e23bb59.ws-us02.gitpod.io/opportunitys";
 
 	return {
 		store: {
@@ -169,7 +169,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			fetchDeleteClient: async id => {
+			fetchDeleteOpportunity: async id => {
 				let actions = getActions();
 
 				try {
